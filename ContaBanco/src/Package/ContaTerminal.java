@@ -15,12 +15,27 @@ public class ContaTerminal {
         System.out.println("Agora, insira um número para sua conta:");
         int numberAccount = sc.nextInt();
 
-        System.out.println("Insira o valor do seu primeiro depósito:");
-        float ballance = sc.nextFloat();
+        float ballance = 0;
+        boolean optionFirtsBallance = false;
+
+        do {
+            System.out.println("Deseja fazer um depósito (y/n) ? ");
+            String answer = sc.next();
+            if (answer.equals("y")){
+                System.out.println("Informe o valor do depósito: ");
+                ballance = sc.nextFloat();
+                optionFirtsBallance = true;
+            } else if (answer.equals("n")) {
+                System.out.println("Ok, estaremos aguardando seu primeiro depósito!");
+                optionFirtsBallance = true;
+            }else {
+                System.out.println("Opção inválida!");
+            }
+        } while(!optionFirtsBallance);
+
+
 
         UserAccount account = new UserAccount(nameClient, agencyAccount, numberAccount, ballance);
-
-        System.out.println("Sua conta foi criada com sucesso e seu saldo já foi contabilizado!\n");
         System.out.println(account);
 
 
